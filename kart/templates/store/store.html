@@ -29,7 +29,7 @@
 				
 				<li><a href="{% url 'store' %}"> All Products </a></li>
 				{% for category in links %}
-				<li><a href="{{category.get_url}}">{{category.category_name}}  </a></li>
+				<li><a href="{% url 'products_by_category' category.slug %}">{{category.category_name}}  </a></li>
 				{% endfor %}
 				</ul>
 
@@ -137,7 +137,8 @@
 			</div> <!-- img-wrap.// -->
 			<figcaption class="info-wrap">
 				<div class="fix-height">
-					<a href="./product-detail.html" class="title"> {{product.product_name}} </a>
+					<a href="{% url 'products_detail' product.category.slug product.slug %}" class="title">{{ product.product_name }}</a>
+
 					<div class="price-wrap mt-2">
 						<span class="price"> {{product.price}} </span>
 					</div> <!-- price-wrap.// -->
